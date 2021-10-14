@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PrescriptionFiller.Views" xmlns:local="clr-namespace:PrescriptionFiller"
+             Title="Prescriptions" BackgroundColor="White"
+             x:Class="PrescriptionFiller.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Padding="0">
+            <Grid BackgroundColor="#FF0000" Padding="20,0,20,0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition>
+                        <RowDefinition.Height>
+                            <OnPlatform x:TypeArguments="GridLength" Android="45" iOS="30" />
+                        </RowDefinition.Height>
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <!--                    <ColumnDefinition Width="*" /> -->
+                </Grid.ColumnDefinitions>
+                <Button x:Name="NewPrescriptions" Text="New" BackgroundColor="#FF0000" TextColor="{Binding NewPrescriptionsColor}" VerticalOptions="FillAndExpand" Command="{Binding NewPrescriptionsCommand}" Grid.Row="0" Grid.Column="0" />
+                <Button x:Name="SentPrescriptions" Text="Sent" BackgroundColor="#FF0000" TextColor="{Binding SentPrescriptionsColor}" VerticalOptions="FillAndExpand" Command="{Binding SentPrescriptionsCommand}" Grid.Row="0" Grid.Column="1" />
+                <!--                <Button x:Name="AllPrescriptions" Text="All" BackgroundColor="Transparent" TextColor="{Binding AllPrescriptionsColor}" VerticalOptions="FillAndExpand" Command="{Binding AllPrescriptionsCommand}" Grid.Row="0" Grid.Column="2" /> -->
+            </Grid>
+            <AbsoluteLayout VerticalOptions="FillAndExpand">
+                <!-- 
+        local:FloatingButton x:Name="CameraButton" Text="" BackgroundColor="#FF0000" TextColor="Transparent" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" 
+                    HeightRequest="72" WidthRequest="72" PaddingLeft="60"
+                    Command="{Binding TakePhotoCommand}" 
+                    AbsoluteLayout.LayoutBounds="0.5, 0.96, AutoSize, AutoSize" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+        -->
+                <local:FloatingButton x:Name="CameraButton" Text="" BorderColor="Red" BackgroundColor="Transparent" TextColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding TakePhotoCommand}" AbsoluteLayout.LayoutBounds="0.5, 0.96, AutoSize, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <!--
+                    <local:FloatingButton.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32"
+                            Android="256"
+                            iOS="36" />
+                    </local:FloatingButton.BorderRadius>
+-->
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                        iOS="Icons/camera_icon.png"
+                        Android="camera_icon.png" />
+                    </Button.Image>
+                    <!--
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                        iOS="Icons/camera_icon.png"
+                        Android="sending.png" />
+                    </Button.Image>
+-->
+                </local:FloatingButton>
+            </AbsoluteLayout>
+            <!--
+            <Button x:Name="LocBtn" Text="Loc" BackgroundColor="Transparent" Command="{Binding getLocationCommand}"/>
+            <Label Text= "{Binding test_location}" VerticalOptions="CenterAndExpand" />
+-->
+            <controls:AdMobView WidthRequest="320" HeightRequest="50" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PrescriptionFiller"
+             Title="My Medical History"
+             x:Class="PrescriptionFiller.Views.EditMedicalHistory">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20,20,20,20">
+                <Label Text="Shots" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                <Editor
+						  x:Name="shots"
+						  Text= "{Binding shots}"
+						  Keyboard="Text"
+                    HeightRequest="100"
+        />
+                <Label Text="Medications" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                <Editor
+						  x:Name="drugs"
+						  Text= "{Binding drugs}"
+						  Keyboard="Text"
+                    HeightRequest="100"
+        />
+                <Label Text="Notes" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                <Editor
+						  x:Name="vaccinations"
+						  Text= "{Binding vaccinations}"
+						  Keyboard="Text"
+                    HeightRequest="100"
+        />
+                <Button BackgroundColor="#FF0000" Text="Save" TextColor="White" Clicked="sendUserInfoUpdate" BorderRadius="0"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

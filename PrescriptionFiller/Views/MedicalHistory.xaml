@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PrescriptionFiller"
+             Title="My Medical History"
+             x:Class="PrescriptionFiller.Views.MedicalHistory">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Edit" Activated="OnClick"  Order="Primary" Priority="0">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+				Android="pfa_icon_edit.png"
+				iOS="Icons/pfa_icon_edit.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20,20,20,20">
+                <Label Text="Shots/Vaccinations" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                <Label Text="{Binding shots}" HeightRequest="100"/>
+                <Label Text="Medications" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                <Label Text="{Binding drugs}" HeightRequest="100"/>
+                <Label Text="Notes" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                <Label Text="{Binding vaccinations}" HeightRequest="100"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

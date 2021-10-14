@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrescriptionFiller.Views.SignUpPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:helpers="clr-namespace:PrescriptionFiller.Helpers;assembly=PrescriptionFiller"
+	xmlns:local="clr-namespace:PrescriptionFiller;assembly=PrescriptionFiller"
+             
+             Title="Sign up">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:PhoneNumberConverter x:Key="phoneNumberConverter"></helpers:PhoneNumberConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="30"
+          VerticalOptions="Start" Color="Transparent" />
+        <Button 
+            x:Name="CancelButton"
+            Text="Cancel" 
+            TextColor="White"
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            Command="{Binding CancelCommand}"
+            WidthRequest="100"
+            BackgroundColor="#FF0000">
+            <Button.BorderRadius>
+                <OnPlatform x:TypeArguments="x:Int32"
+                    Android="32"
+                    iOS="16" />
+            </Button.BorderRadius>
+        </Button>
+
+        <ScrollView Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <local:SimpleGrid x:Name="Page1" 
+                                      RowSpacing="10"
+                                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                                      AbsoluteLayout.LayoutFlags="All" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <Entry
+							x:Name="firstNameText"
+							Text= "{Binding FirstName}"
+							TextColor="Black"
+							IsPassword="false"
+							Placeholder="First Name"
+							Grid.Row="0" Grid.Column="1" />
+                <Entry
+							x:Name="lastNameText"
+							Text= "{Binding LastName}"
+							TextColor="Black"
+							IsPassword="false"                     
+							Placeholder="Last Name"
+							Grid.Row="1" Grid.Column="1" />
+                <Label Text="Birthday" FontSize="Small" FontAttributes="Italic" TextColor="Silver"
+                                   Grid.Row="2" Grid.Column="1" YAlign="Center" />
+
+                <local:CustomDatePicker VerticalOptions="CenterAndExpand" Date="{Binding DateOfBirth}" MaximumDate="{x:Static sys:DateTime.Now}" x:Name="dateOfBirthText" 
+							HeightRequest="50"
+						 	Grid.Row="3" Grid.Column="1" TextColor="Black">
+                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                </local:CustomDatePicker>
+
+                <StackLayout 
+							Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" 
+							Orientation="Horizontal">
+                    <Button x:Name="MaleButton" Text="Male" TextColor="Black"   BackgroundColor="Transparent" HeightRequest="48" Command="{Binding MaleCommand}" HorizontalOptions="FillAndExpand">
+                        <Button.Image>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+										iOS="Icons/pfa_icon_check_on.png"
+										Android="pfa_icon_check_on.png" />
+                        </Button.Image>
+                    </Button>
+
+                    <Button x:Name="FemaleButton" Text="Female" TextColor="Black" BackgroundColor="Transparent" HeightRequest="48" Command="{Binding FemaleCommand}" HorizontalOptions="FillAndExpand">
+                        <Button.Image>
+                            <OnPlatform x:TypeArguments="FileImageSource"
+										iOS="Icons/pfa_icon_check_off.png"
+										Android="pfa_icon_check_off.png" />
+                        </Button.Image>
+                    </Button>
+                </StackLayout>
+                <!--this is giving an error because the ConverterParameter is empty-->
+                <!--<Entry
+							x:Name="phoneNumberText"
+							Text= "{Binding PhoneNumber,Converter={StaticResource phoneNumberConverter},ConverterParameter=}"
+							TextColor="Black"
+							IsPassword="false"
+							Keyboard="Telephone"
+							Placeholder="Phone Number"
+							Grid.Row="5" Grid.Column="1" />-->
+                <Entry
+							x:Name="phoneNumberText"
+							Text= "{Binding PhoneNumber,Converter={StaticResource phoneNumberConverter}}"
+							TextColor="Black"
+							IsPassword="false"
+							Keyboard="Telephone"
+							Placeholder="Phone Number"
+							Grid.Row="5" Grid.Column="1" />
+
+                <Entry
+							x:Name="emailAddressText"
+							Text= "{Binding EmailAddress}"
+							TextColor="Black"
+							IsPassword="false"
+							Keyboard="Email"
+							Placeholder="Email"
+							Grid.Row="6" Grid.Column="1" />
+
+                <Entry
+							x:Name="passwordText"
+							Text= "{Binding Password}"
+							TextColor="Black"
+							IsPassword="true"
+							Placeholder="Password"
+							Grid.Row="7" Grid.Column="1" />
+
+                <Entry
+							x:Name="confirmPasswordText"
+							Text= "{Binding ConfirmPassword}"
+							TextColor="Black"
+							IsPassword="true"
+							Placeholder="Confirm Password"
+							Grid.Row="8" Grid.Column="1" />
+
+                <Button x:Name="showPasswordButton" 
+                                Text="Show Password" TextColor="Black"
+                                Margin="-10,-10,0,0"
+                                BackgroundColor="Transparent" HeightRequest="48" 
+                                Command="{Binding toggleShowPassword}" 
+                                HorizontalOptions="Start"
+                                Grid.Row="9" Grid.Column="1">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+									iOS="Icons/pfa_icon_check_off.png"
+									Android="pfa_icon_check_off.png" />
+                    </Button.Image>
+                </Button>
+
+                <Button  
+							x:Name="ContinueButton"
+							FontFamily="HelveticaNeue"
+							Text="Sign Up"
+							TextColor="White"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Command="{Binding ContinueCommand}"
+                            WidthRequest="300"
+                            BackgroundColor="#FF0000"
+							Grid.Row="10" Grid.Column="1">
+                    <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32"
+									Android="32"
+									iOS="16" />
+                    </Button.BorderRadius>
+                </Button>
+            </local:SimpleGrid>
+
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

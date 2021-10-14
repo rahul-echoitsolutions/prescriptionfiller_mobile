@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:local="clr-namespace:PrescriptionFiller"
+             x:Class="PrescriptionFiller.Views.EditAccountInfoPage"
+             Title="Edit Account Info">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="20,20,20,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="First Name" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+							x:Name="firstNameText"
+							Text="{Binding first_name}"
+							TextColor="Black"
+							IsPassword="false"
+							Placeholder="John"
+							Grid.Row="1" Grid.Column="0" />
+
+                    <Label Text="Date Of Birth" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="2" Grid.Column="0" YAlign="Center" />
+
+                    <local:CustomDatePicker VerticalOptions="CenterAndExpand" TextColor="Black" MaximumDate="{x:Static sys:DateTime.Now}" x:Name="dateOfBirthText" 
+							HeightRequest="30"
+						 	Grid.Row="3" Grid.Column="0"
+						 	Date="{Binding dateObj_DOB}">
+                        <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                    </local:CustomDatePicker>
+                    <!-- BackgroundColor="#bcd4e6"-->
+
+
+                    <Label Text="Phone" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="4" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+							x:Name="phoneNumberText"
+							TextColor="Black"
+							IsPassword="false"
+							Keyboard="Telephone"
+							Text="{Binding phone_number}"
+							Placeholder="565-344-5578"
+							Grid.Row="5" Grid.Column="0" />
+
+
+                    <Label Text="Email" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="6" Grid.Column="0" YAlign="Center" />
+
+                    <local:CustomLineEntry
+							x:Name="emailAddressText"
+							TextColor="Black"
+							IsPassword="false"
+							Keyboard="Email"
+							Text="{Binding email}"
+							Placeholder="john.doe@mail.com"
+							Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" />
+
+
+                    <Label Text="Last Name" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="1" YAlign="Center" />
+                    <local:CustomLineEntry
+							x:Name="lastNameText"
+							TextColor="Black"
+							IsPassword="false"
+							Text="{Binding last_name}"
+							Placeholder="Doe"
+							Grid.Row="1" Grid.Column="1" />
+
+                    <Label Text="Gender" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="2" Grid.Column="1" YAlign="Center" />
+                    <Label Text="{Binding sex}" Grid.Row="3" Grid.Column="1" YAlign="Center" />
+                    <Label Text="Password" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="4" Grid.Column="1" YAlign="Center" />
+                    <local:CustomLineEntry
+							x:Name="password"
+							TextColor="Black"
+							IsPassword="true"
+							Text="{Binding password}"
+							Placeholder="enter password"
+							Grid.Row="5" Grid.Column="1" />
+
+                </Grid>
+                <!--
+				<Grid BackgroundColor="#FF0000" Padding="20,0,20,0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="30" />
+						<RowDefinition Height="50" />
+					</Grid.RowDefinitions>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+
+					<Label Text="Height" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" XAlign="Center" YAlign="End" BackgroundColor="#FF0000" />
+					<Label Text="175 cm" FontSize="Large" Grid.Row="1" Grid.Column="0" XAlign="Center" YAlign="Start" FontAttributes="Bold" TextColor="White" BackgroundColor="#FF0000" />
+					<Label Text="Weight" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="1" XAlign="Center" YAlign="End" BackgroundColor="#FF0000" />
+					<Label Text="78 kg" FontSize="Large" Grid.Row="1" Grid.Column="1" XAlign="Center" YAlign="Start" FontAttributes="Bold" TextColor="White" BackgroundColor="#FF0000" />
+					<Label Text="Blood Type" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="2" XAlign="Center" YAlign="End" BackgroundColor="#FF0000" />
+					<Label Text="B" FontSize="Large" Grid.Row="1" Grid.Column="2" XAlign="Center" YAlign="Start" FontAttributes="Bold" TextColor="White" BackgroundColor="#FF0000" />
+				</Grid>
+-->
+                <StackLayout Padding="20,20,20,20">
+                    <Label Text="Allergies/Reactions" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+              x:Name="allergies"
+              TextColor="Black"
+              IsPassword="false"
+              Text="{Binding allergies}"
+              />
+                    <Label Text="Medical Insurance Provider" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+              x:Name="medicalInsuranceProvider"
+              TextColor="Black"
+              IsPassword="false"
+              Text="{Binding medical_insurance_provider}"/>
+                    <Label Text="Carrier" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+              x:Name="carrierNumber"
+              TextColor="Black"
+              IsPassword="false"
+              Text="{Binding carrier_number}"/>
+                    <Label Text="Plan" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+              x:Name="planNumber"
+              TextColor="Black"
+              IsPassword="false"
+              Text="{Binding plan_number}"/>
+                    <Label Text="Member ID" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+              x:Name="memberId"
+              TextColor="Black"
+              IsPassword="false"
+              Text="{Binding member_id}"/>
+                    <Label Text="Issue" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+              x:Name="issueNumber"
+              TextColor="Black"
+              IsPassword="false"
+              Text="{Binding issue_number}"/>
+                    <Label Text="Personal Health Number" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <local:CustomLineEntry
+              x:Name="personalHealthNumber"
+              TextColor="Black"
+              IsPassword="false"
+              Text="{Binding personal_health_number}"/>
+                    <Button BackgroundColor="#FF0000" Text="Save" TextColor="White" Clicked="sendUserInfoUpdate" BorderRadius="0"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

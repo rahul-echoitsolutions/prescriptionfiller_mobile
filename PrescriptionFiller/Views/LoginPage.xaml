@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PrescriptionFiller"
+             Title="Login"
+             BackgroundColor="White"
+             x:Class="PrescriptionFiller.Views.LoginPage">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,	Property=Height,Factor=0.10}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1.00}"
+                RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest="150" WidthRequest="150"
+                       HorizontalOptions="Center" Grid.VerticalOptions="Center">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource"
+                        Android="pfa_logo_withtext.png"
+                        iOS="Icons/pfa_logo_withtext.png" />
+                    </Image.Source>
+                </Image>
+
+                <Image Grid.Row="1" Grid.Column="1">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource"
+                        Android="pfa_icon_letter.png"
+                        iOS="Icons/pfa_icon_letter.png" />
+                    </Image.Source>
+                </Image>
+
+                <Entry x:Name="usernameText"
+                       Text= "{Binding EmailAddress}"
+                       TextColor="Black"
+                       IsPassword="false"
+                       Margin="0,6,0,0"
+                       Keyboard="Email"
+                       BackgroundColor="Transparent"
+                       Placeholder="Email Address"
+                       Grid.Row="1" Grid.Column="2"/>
+
+                <Image Grid.Row="2" Grid.Column="1">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource"
+						Android="pfa_icon_lock.png"
+						iOS="Icons/pfa_icon_lock.png" />
+                    </Image.Source>
+                </Image>
+                <Entry x:Name="passwordText"
+                       Text= "{Binding Password}"  
+                       TextColor="Black"
+                        Margin="0,6,0,0"
+                       IsPassword="true"
+                       BackgroundColor="Transparent"
+                       Placeholder="Password"
+                       Grid.Row="2" Grid.Column="2" />
+
+                <Button FontFamily="HelveticaNeue"
+                        Text="Sign In"
+                        TextColor="White"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding LoginCommand}"
+                        BackgroundColor="#FF0000"
+                        Margin="0,15,0,0"
+                        Grid.Row="3" Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        WidthRequest="300"
+                        MinimumHeightRequest="38">
+                    <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32"
+                                    Android="32"
+                                    iOS="16" />
+                    </Button.BorderRadius>
+                </Button>
+
+                <Button FontFamily="HelveticaNeue"
+                        Text="Sign Up"
+                        TextColor="White"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding SignUpCommand}"
+                        BackgroundColor="#FF0000"
+                        Grid.Row="4" Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        WidthRequest="300"
+                        MinimumHeightRequest="38">
+                    <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32"
+                                    Android="32"
+                                    iOS="16" />
+                    </Button.BorderRadius>
+                </Button>
+
+                <Button FontFamily="HelveticaNeue"
+                        Text="Forgot Password"
+                        TextColor="Black"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Command="{Binding ForgotPasswordCommand}"
+                        BackgroundColor="Transparent"
+                        Grid.Row="5" Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        WidthRequest="300"
+                        MinimumHeightRequest="38">
+                </Button>
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

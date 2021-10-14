@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrescriptionFiller.Views.PrescriptionDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <!--
+					<Grid Padding="20,20,20,20">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="20" />
+							<RowDefinition Height="30" />
+							<RowDefinition Height="20" />
+							<RowDefinition Height="30" />
+							<RowDefinition Height="20" />
+							<RowDefinition Height="30" />
+						</Grid.RowDefinitions>
+
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Label Text="Full Name" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+						<Label Text="John Doe" Grid.Row="1" Grid.Column="0" YAlign="Center" />
+						<Label Text="Phone" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="2" Grid.Column="0" YAlign="Center" />
+						<Label Text="+1-565-344-5578" Grid.Row="3" Grid.Column="0" YAlign="Center" />
+						<Label Text="Email" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="4" Grid.Column="0" YAlign="Center" />
+						<Label Text="john.doe@mail.com" Grid.Row="5" Grid.Column="0" YAlign="Center" Grid.ColumnSpan="2" />
+
+
+						<Label Text="Date Of Birth" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="1" YAlign="Center" />
+						<Label Text="July 15, 1975" Grid.Row="1" Grid.Column="1" YAlign="Center" />
+						<Label Text="Gender" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="2" Grid.Column="1" YAlign="Center" />
+						<Label Text="Male" Grid.Row="3" Grid.Column="1" YAlign="Center" />
+					</Grid>
+-->
+
+                    <StackLayout Padding="20,20,20,20">
+                        <Label Text="Prescription Status" FontSize="Small" FontAttributes="Italic" TextColor="Silver"/>
+                        <Label Text="{Binding PrescriptionStatus}" YAlign="Center" />
+                        <Label Text="Medical Notes" FontAttributes="Bold" />
+                        <!--
+						<Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eleifend tincidunt orci, at luctus turpis luctus at. Phasellus sem enim, luctus at feugiat sit amet, fringilla fringilla metus. Etiam varius iaculis vestibulum. Mauris est augue, rutrum id ex at, consectetur convallis libero. Nunc nec odio at felis feugiat consectetur blandit ac tortor. Etiam aliquam velit et nisl scelerisque auctor. Vestibulum semper elementum justo. Nam vel enim sem. Vivamus eu mi elementum, mollis turpis ac, condimentum orci. Aliquam tempus diam ac risus scelerisque maximus. Integer sit amet nulla in urna malesuada malesuada et consectetur ex. Etiam at lectus nisi. Vestibulum quis mauris ac mauris tempus eleifend in porttitor sapien. In dictum tristique odio at elementum." />
+						-->
+                        <Entry
+						  x:Name="medicalNotes"
+						  Text= "{Binding MedicalNotes}"
+                          IsEnabled="{Binding isNotSent}"
+						  IsPassword="false"
+						  Keyboard="Text"
+						  BackgroundColor="Transparent"
+						  Placeholder="Medical Notes"
+						Grid.Row="0" Grid.Column="2" />
+                        <Label Text="Prescription Description" FontAttributes="Bold" />
+                        <Entry
+						  x:Name="prescriptionDescription"
+						  Text= "{Binding PrescriptionDescription}"
+                          IsEnabled="{Binding isNotSent}"
+						  IsPassword="false"
+						  Keyboard="Text"
+						  BackgroundColor="Transparent"
+						  Placeholder="Prescription Description"
+						Grid.Row="0" Grid.Column="2" />
+
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button BackgroundColor="#FF0000" Text="Select Pharmacy" TextColor="White" Clicked="Send" BorderRadius="0"
+                                              IsEnabled="{Binding isNotSent}"
+                    />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

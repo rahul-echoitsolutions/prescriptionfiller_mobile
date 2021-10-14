@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PrescriptionFiller"
+             x:Class="PrescriptionFiller.Views.AccountInfoPage" Title="Account Info">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Edit" Activated="OnClick"  Order="Primary" Priority="0">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource"
+				Android="pfa_icon_edit.png"
+				iOS="Icons/pfa_icon_edit.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="20,20,20,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="20" />
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="First Name" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" YAlign="Center" />
+                    <Label Text= "{Binding first_name}" Grid.Row="1" Grid.Column="0" YAlign="Center" />
+                    <Label Text="Date Of Birth" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="2" Grid.Column="0" YAlign="Center" />
+                    <Label Text="{Binding date_of_birth}" Grid.Row="3" Grid.Column="0" YAlign="Center" />
+                    <Label Text="Phone" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="4" Grid.Column="0" YAlign="Center" />
+                    <Label Text="{Binding phone_number}" Grid.Row="5" Grid.Column="0" YAlign="Center" />
+                    <Label Text="Email" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="6" Grid.Column="0" YAlign="Center" />
+                    <Label Text="{Binding email}" Grid.Row="7" Grid.Column="0" YAlign="Center" Grid.ColumnSpan="2" />
+
+
+                    <Label Text="Last Name" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="1" YAlign="Center" />
+                    <Label Text="{Binding last_name}" Grid.Row="1" Grid.Column="1" YAlign="Center" />
+                    <Label Text="Gender" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="2" Grid.Column="1" YAlign="Center" />
+                    <Label Text="{Binding sex}" Grid.Row="3" Grid.Column="1" YAlign="Center" />
+
+                </Grid>
+                <!--
+				<Grid BackgroundColor="#FF0000" Padding="20,0,20,0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="30" />
+						<RowDefinition Height="50" />
+					</Grid.RowDefinitions>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Label Text="Height" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="0" XAlign="Center" YAlign="End" BackgroundColor="#FF0000" />
+					<Label Text="{Binding height}" FontSize="Large" Grid.Row="1" Grid.Column="0" XAlign="Center" YAlign="Start" FontAttributes="Bold" TextColor="White" BackgroundColor="#FF0000" />
+					<Label Text="Weight" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="1" XAlign="Center" YAlign="End" BackgroundColor="#FF0000" />
+					<Label Text="{Binding weight}" FontSize="Large" Grid.Row="1" Grid.Column="1" XAlign="Center" YAlign="Start" FontAttributes="Bold" TextColor="White" BackgroundColor="#FF0000" />
+					<Label Text="Blood Type" FontSize="Small" FontAttributes="Italic" TextColor="Silver" Grid.Row="0" Grid.Column="2" XAlign="Center" YAlign="End" BackgroundColor="#FF0000" />
+					<Label Text="{Binding bloodType}" FontSize="Large" Grid.Row="1" Grid.Column="2" XAlign="Center" YAlign="Start" FontAttributes="Bold" TextColor="White" BackgroundColor="#FF0000" />
+				</Grid>
+-->
+                <!-- Allergies, Medical Insurance Provider, Carrier#, Plan #, Member ID, Issue #, Personal Health Number -->
+                <!--
+            _instance.instanceLoginReponse.user = new UserInfo();
+            _instance.instanceLoginReponse.user.id = userInfoResponse.data.id;
+            _instance.instanceLoginReponse.user.email = userInfoResponse.data.email;
+            _instance.instanceLoginReponse.user.created_at = userInfoResponse.data.created_at;
+            _instance.instanceLoginReponse.user.updated_at = userInfoResponse.data.updated_at;
+            _instance.instanceLoginReponse.user.date_of_birth = userInfoResponse.data.date_of_birth;
+            _instance.instanceLoginReponse.user.sex = userInfoResponse.data.sex;
+            _instance.instanceLoginReponse.user.first_name = userInfoResponse.data.first_name;
+            _instance.instanceLoginReponse.user.last_name = userInfoResponse.data.last_name;
+            _instance.instanceLoginReponse.user.phone_number = userInfoResponse.data.phone_number;
+            // delete _instance.instanceLoginReponse.user.notes = userInfoResponse.notes;
+            _instance.instanceLoginReponse.user.allergies = userInfoResponse.data.allergies;
+            _instance.instanceLoginReponse.user.medical_insurance_provider = userInfoResponse.data.medical_insurance_provider;
+            _instance.instanceLoginReponse.user.carrier_number = userInfoResponse.data.carrier_number;
+            _instance.instanceLoginReponse.user.plan_number = userInfoResponse.data.plan_number;
+            _instance.instanceLoginReponse.user.member_id = userInfoResponse.data.member_id;
+            _instance.instanceLoginReponse.user.issue_number = userInfoResponse.data.issue_number;
+            _instance.instanceLoginReponse.user.personal_health_number = userInfoResponse.data.personal_health_number;
+            _instance.instanceLoginReponse.user.shots = userInfoResponse.data.shots;
+            _instance.instanceLoginReponse.user.drugs = userInfoResponse.data.drugs;
+            _instance.instanceLoginReponse.user.vaccinations = userInfoResponse.data.vaccinations;
+
+-->
+                <StackLayout Padding="20,20,20,20">
+                    <Label Text="Allergies/Reactions" FontSize="Small" FontAttributes="Italic" TextColor="Silver" />
+                    <Label Text="{Binding allergies}" Margin="0, 0, 0, 10" />
+                    <Label Text="Medical Insurance Provider" FontSize="Small" FontAttributes="Italic" TextColor="Silver" />
+                    <Label Text="{Binding medical_insurance_provider}" Margin="0, 0, 0, 10" />
+                    <Label Text="Carrier" FontSize="Small" FontAttributes="Italic" TextColor="Silver" />
+                    <Label Text="{Binding carrier_number}" Margin="0, 0, 0, 10" />
+                    <Label Text="Plan" FontSize="Small" FontAttributes="Italic" TextColor="Silver" />
+                    <Label Text="{Binding plan_number}" Margin="0, 0, 0, 10" />
+                    <Label Text="Member ID" FontSize="Small" FontAttributes="Italic" TextColor="Silver" />
+                    <Label Text="{Binding member_id}" Margin="0, 0, 0, 10" />
+                    <Label Text="Issue" FontSize="Small" FontAttributes="Italic" TextColor="Silver" />
+                    <Label Text="{Binding issue_number}" Margin="0, 0, 0, 10" />
+                    <Label Text="Personal Health Number" FontSize="Small" FontAttributes="Italic" TextColor="Silver" />
+                    <Label Text="{Binding personal_health_number}" Margin="0, 0, 0, 10" />
+                    <!--
+          <Button
+            BackgroundColor="#FF0000"
+            Text="View My Medical History"
+            TextColor="White"
+            BorderRadius="0"
+            VerticalOptions="CenterAndExpand"
+            Clicked="ViewMedicalHistory"/>
+          -->
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
